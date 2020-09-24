@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.androidworkshop12.ui.main.FirstFragment
 import com.example.androidworkshop12.ui.main.SecondFragment
 import kotlinx.android.synthetic.main.main_activity.*
+import org.koin.ext.scope
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,5 +24,10 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
             .commitNow()
+    }
+
+    override fun onDestroy() {
+        scope.close()
+        super.onDestroy()
     }
 }
