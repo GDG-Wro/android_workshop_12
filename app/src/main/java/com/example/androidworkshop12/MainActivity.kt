@@ -1,15 +1,22 @@
 package com.example.androidworkshop12
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.androidworkshop12.di.ActivityComponent
+import com.example.androidworkshop12.di.DaggerActivityComponent
 import com.example.androidworkshop12.ui.main.FirstFragment
 import com.example.androidworkshop12.ui.main.SecondFragment
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var activityComponent: ActivityComponent
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        activityComponent = DaggerActivityComponent.builder()
+            .appComponent(appComponent)
+            .build()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
@@ -25,3 +32,5 @@ class MainActivity : AppCompatActivity() {
             .commitNow()
     }
 }
+
+val Fragment.activityComponent get() = (requireActivity() as MainActivity).activityComponent

@@ -1,8 +1,8 @@
 package com.example.androidworkshop12.repository
 
-import java.util.*
+import javax.inject.Inject
 import kotlin.random.Random
 
-class RandomNumberRepository : NumberRepository {
+class RandomNumberRepository @Inject constructor() : NumberRepository {
     override val number = Random.nextInt(1000)
 }
