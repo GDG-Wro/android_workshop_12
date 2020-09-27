@@ -4,13 +4,16 @@ import com.example.androidworkshop12.repository.NumberRepository
 import com.example.androidworkshop12.repository.RandomNumberRepository
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Named
-import javax.inject.Qualifier
 
 @Module
+@InstallIn(ActivityComponent::class)
 interface ActivityModule {
     @Binds
     @Named("activity")
-    @ActivityScope
+    @ActivityScoped
     fun bindNumberRepository(randomNumberRepository: RandomNumberRepository): NumberRepository
 }
