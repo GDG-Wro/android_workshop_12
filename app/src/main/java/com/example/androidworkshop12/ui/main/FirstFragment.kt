@@ -10,6 +10,7 @@ import com.example.androidworkshop12.activityComponent
 import com.example.androidworkshop12.repository.NumberRepository
 import kotlinx.android.synthetic.main.main_fragment.*
 import javax.inject.Inject
+import javax.inject.Named
 
 class FirstFragment : Fragment(R.layout.main_fragment) {
 
@@ -22,6 +23,7 @@ class FirstFragment : Fragment(R.layout.main_fragment) {
     private val viewModel: MainViewModel by viewModels { viewModelFactory }
 
     @Inject
+    @Named("activity")
     lateinit var repository: NumberRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {

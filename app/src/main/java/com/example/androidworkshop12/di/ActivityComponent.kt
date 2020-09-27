@@ -1,7 +1,7 @@
 package com.example.androidworkshop12.di
 
 import com.example.androidworkshop12.ui.main.FirstFragment
-import dagger.Component
+import dagger.Subcomponent
 import javax.inject.Scope
 
 @Scope
@@ -9,14 +9,7 @@ import javax.inject.Scope
 annotation class ActivityScope
 
 @ActivityScope
-@Component(modules = [ActivityModule::class], dependencies = [AppComponent::class])
+@Subcomponent(modules = [ActivityModule::class])
 interface ActivityComponent {
     fun inject(fragment: FirstFragment)
-
-    @Component.Builder
-    interface Builder {
-        fun appComponent(appComponent: AppComponent): Builder
-
-        fun build(): ActivityComponent
-    }
 }
